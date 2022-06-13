@@ -1,0 +1,50 @@
+h1,a,h2,h3,h4{
+    color:red;
+    font-size:20
+}
+/* 
+body{
+    color:aqua
+} */
+
+li strong {
+    color:rgb(165, 13, 145)
+}
+
+#p1{
+    color:bisque
+}
+
+.p01{
+    color: blue;
+}
+
+.css03body {
+    /* background-color:greenyellow; */
+    background-image: url("img/封面.png");
+    background-position: center top;
+    background-size: 50%;
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    color: aqua ;
+}
+
+.css03p01{
+    background-color:red;
+    width: 150px;
+    padding: 10px;
+}
+
+.think-h{
+    text-indent: 2em;
+}
+
+.css03p02{
+    text-transform: capitalize;
+}
+.css03p03{
+    text-transform: lowercase;
+}
+.css03p04{
+    text-transform: uppercase;
+}

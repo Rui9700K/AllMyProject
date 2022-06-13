@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+    <script>
+        window.onload = function () {
+
+        }
+    </script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        姓:<input type="text" v-model="firstname"><br/><br/>
+        名:<input type="text" v-model="lastname"><br/><br/>
+        全名:<span>{{fullname()}}</span><br/>
+        <!-- 标签里面调用函数可以直接传参数，对于鼠标事件event可以使用$event的方式进行占位 -->
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#container',
+            data: {
+                firstname: "周",
+                lastname: "扬帆"
+            },
+            methods: {
+                fullname(){
+                    return this.firstname+'-'+this.lastname
+                }
+            }
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

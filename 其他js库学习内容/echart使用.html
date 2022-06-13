@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
+    <style>
+        #first {
+            float: left;
+        }
+
+        #second {
+            float: left;
+        }
+
+        #container{
+            background-color: turquoise;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <div id="first" style="width:400px;height: 500px;"></div>
+        <div id="second" style="width:400px;height: 500px;"></div>
+    </div>
+    <script src="" async defer></script>
+    <script>
+        var mychart1 = echarts.init(document.querySelector("#first"))
+        var mychart2 = echarts.init(document.querySelector("#second"))
+
+        var option1 = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: '销量',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10, 20]
+                }
+            ]
+        };
+
+        var option2 = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c}%'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 10,
+                data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            },
+            color: ['#1689fe', '#cd9d9d', '#8c79fe', '#90c5ed', '#bfc078'], // 自定义颜色
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    minAngle: 10, // 最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互
+                    radius: ['30%', '70%'],
+                    center: ['48%', '58%'],
+                    label: {
+                        formatter: '{b|{b}}\n（{c}%）\n', // 这里的设置就是饼图的标签内容及其格式
+                        rich: {
+                            b: {
+                                align: 'center'
+                            }
+                        }
+                    },
+                    data: [
+                        { value: 0, name: '直接访问' },
+                        { value: 0, name: '邮件营销' },
+                        { value: 20, name: '联盟广告' },
+                        { value: 30, name: '视频广告' },
+                        { value: 50, name: '搜索引擎' }
+                    ]
+                }
+            ]
+        };
+
+
+        mychart1.setOption(option1);
+        mychart2.setOption(option2);
+    </script>
+</body>
+
+</html>

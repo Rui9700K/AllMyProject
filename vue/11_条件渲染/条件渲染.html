@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="container">
+            <!-- 使用v-show做条件渲染 -->
+            <!-- <h1 v-show="true">{{name}}</h1> -->
+            <!-- v-if 将节点彻底隐藏 -->
+            <!-- <h1 v-if="true">{{name}}</h1> -->
+            <h1>当前的值是{{n}}</h1>
+            <button @click="n++">点击n+1</button>
+            <div v-if="(n+1)%3 === 1">Angular</div>
+            <div v-else-if="(n+1)%3 === 2">React</div>
+            <div v-else-if="(n+1)%3 === 0">Vue</div>
+            <!-- v-if 和 v-else-if 和 v-else 用法如同判断语句 但是结构上需要连续-->
+
+            <template v-if="n!= 0">
+                <h2>你好</h2>
+                <h2>你好</h2>
+                <h2>你好</h2>
+            </template>
+            <!-- 
+                template是模板标签，可以对元素进行包裹处理，但是最终渲染不会有这个标签 
+                一般与v-if使用（不能用v-show）
+            -->
+        </div>
+        <script>
+            Vue.config.productionTip = false;
+
+            new Vue({
+               el:'#container',
+               data: {
+                  name:'ZYF',
+                  n:0
+               },
+            })
+        </script>
+        <script src="" async defer></script>
+    </body>
+</html>

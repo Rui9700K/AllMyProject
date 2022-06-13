@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h2>名称：{{name}}</h2>
+        <h2>地址：{{address}}</h2>
+        <button @click = 'addsex'>添加性别</button>
+        <hr/>
+        <h2>学生姓名：{{students.name}}</h2>
+        <h2>学生年龄：{{students.age.rAge}}</h2>
+        <h2>性别：{{students.sex}}</h2>
+        <h2>朋友</h2>
+        <ul>
+            <li v-for="(f,index) in students.friends" :key="index">
+                {{f.name}}--{{f.age}}
+            </li>
+        </ul>
+        <h2>爱好</h2>
+            <li v-for="v in students.hobby">
+                {{v}}
+            </li>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        /* 
+            需求：后添加的属性也有响应式的效果
+            Vue.set()  三个参数：添加的对象，添加的属性名，添加的属性值
+            或者 实例对象.$set() 三个参数：添加的对象，添加的属性名，添加的属性值
+        */
+
+
+        /* 
+            在Vue中，针对数组是不进行检测的
+        */
+        const vm = new Vue({
+            el: '#container',
+            data: {
+                name:'BUCT',
+                address:'beijing',
+                hobby:['电影','学习','睡觉'],//这样的数组是没法直接检测的，也就是没法完成响应式布局
+                //会对原数组操作的数组方法
+                //1.push() 将一个或多个元素添加到数组的末尾，并返回该数组的新长度。此方法修改原有数组。
+                //2.pop()，从数组中删除最后一个元素，并返回该元素的值。如果数组为空，则返回undefined。此方法修改原有数组。
+                //3.shift()，从数组中删除第一个元素，并返回该元素的值。此方法修改原有数组。
+                //4.unshift()，将一个或多个元素添加到数组的开头，并返回该数组的新长度。此方法修改原有数组。
+                //5.splice(start,deleteCount?,item1?) ，通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容（如果只删除了一个元素，则返回只包含一个元素的数组。如果没有删除元素，则返回空数组）。此方法修改原数组。
+                //6.sort()，对数组的元素进行排序。此方法修改原数组。
+                //7.reverse()，将数组中元素的位置颠倒，并返回该数组。数组的第一个元素会变成最后一个，数组的最后一个元素变成第一个。该方法修改原数组。
+                //更多 ：https://blog.csdn.net/qq_41926416/article/details/121137061
+                students:{
+                    name:'ZYF',
+                    age:{
+                        rAge:23,
+                        sAge:22,
+                    },
+                    hobby:['读书','看电影','学习'],
+                    friends:[
+                        {name:'TOM',age:22},
+                        {name:'KITE',age:23}
+                    ]
+                }
+            },
+            methods: {
+                addsex(){
+                    Vue.set(this.students,'sex','男')
+                }
+            },
+            computed: {
+            },
+            watch: {
+            },
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

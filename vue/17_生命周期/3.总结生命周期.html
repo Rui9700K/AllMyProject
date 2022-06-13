@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h1 :style="{opacity: opacity}">欢迎学习Vue</h1>
+        <button @click='opacity = 1'>将透明度设为1</button>
+        <button @click="stop">点我停止变换</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#container',
+            data: {
+                opacity: 1
+            },
+            methods: {
+                stop(){
+                    this.$destroy();
+                }
+            },
+            computed: {
+            },
+            watch: {
+            },
+            //Vue完成模板解析，并把真实dom元素放入页面后（完成挂载）调用mounted
+            mounted() {
+                let flag = 1
+
+                this.change = setInterval(() => {
+                    if (flag <= 1 && flag >= 0) {
+                        this.opacity = this.opacity - 0.01
+                        flag = flag - 0.01
+                    } else {
+                        this.opacity = this.opacity + 0.01
+                        flag = flag - 0.01
+                    }
+                    if (flag <= -1) {
+                        flag = 1
+                    }
+                }, 16);
+            },
+            beforeDestroy() {
+                clearInterval(this.change)
+            },
+        })
+
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

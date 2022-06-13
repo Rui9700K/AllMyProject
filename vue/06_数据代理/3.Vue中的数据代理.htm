@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        window.onload = function () {
+
+        }
+    </script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h1>姓名：{{name}}</h1>
+        <h1>年龄: {{age}}</h1>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        /* 
+            1.Vue中的数据代理:
+            通过vm对象来代理data对象中属性的操作(读/写)
+            2.Vue中数据代理的好处:
+            更加方便的操作data中的数据
+            3.基本原理:
+            通过0bject . defineProperty( )把data对象中所有属性添加到vm上。
+            为每个添加到vm 上的属性，都指定一个getter/setter.
+            在getter/setter内部去操作(读/写) data中对应的属性。
+        */
+        const vm = new Vue({
+            el: '#container',
+            data: {
+                name: "ZYF",
+                age: 22
+            },
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

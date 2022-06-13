@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script>
+            //es6引入rest函数，用于获取函数的实参，用来代替arguments
+            //写法 ...+名称 写在形参里面
+            function data(){
+                console.log(arguments)
+            }
+            data("1","2","3")//es5的方法
+
+            function data2(...args){
+                console.log(args)//filter some every map
+            }
+            data2("1","2","3")//变成数组
+
+            function data3(a,b,...args){//...args必须放在最后
+                console.log(a)
+                console.log(b)
+                console.log(args)//filter some every map
+            }
+            data3(1,2,3,4,5,6)//变成数组
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="" async defer></script>
+    </body>
+</html>

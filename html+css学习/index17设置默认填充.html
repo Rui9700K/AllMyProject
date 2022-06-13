@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function setValue() {
+            var label = document.getElementById("title");
+            var textbox = label.control;
+            textbox.value = "想做嘉然小姐的狗";
+        }
+    </script>
+
+    <form>
+        <label id="title">
+            题目：
+            <input type="text" id="txt" placeholder="球球你输入吧！">
+            <small color="red">*必填项</small>
+        </label>
+        <input type="button" value="生成默认值" onclick="setValue()">
+    </form>
+</body>
+</html>

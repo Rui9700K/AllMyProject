@@ -1,0 +1,89 @@
+*{
+    margin: 0px;
+}
+
+body {
+    background-color:#CCCCFF;
+}
+
+.Log{
+    z-index:1;
+}
+.login{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 70px;
+    float: right;
+    text-align: right;
+    position: relative;
+}
+.logout{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 35px;
+    float: right;
+    text-align: right;
+    position: relative;
+}
+
+.login:hover,.logout:hover{
+    animation: animation2 300ms;
+}
+
+@keyframes animation2 {
+    0%{transform:rotateY(0deg)}
+    50%{transform:rotateY(180deg)}
+    100%{transform:rotateY(360deg)}
+}
+
+#login1,#logout1{
+    font-size:26px;
+}
+
+.HeadDiv{
+    margin-top: 0px;
+    height: 120px;
+    width: 100%;
+    position: absolute;
+    padding-top:50px;
+    list-style-type: none;
+    background:url(img/星空.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.HeadDivContainer{
+    margin-top: 50px;
+}
+
+.headline{
+    float: left;
+    margin-top: -35px;
+    transition-delay:500ms;
+    margin-left: 17%;
+}
+
+.headline:hover{
+    animation: animation1 500ms; 
+}
+
+@keyframes animation1{
+    0%{transform:translate(0px,0px)}
+    50%{transform:translate(0px,-20px)}
+    100%{transform:translate(0px,0px)}
+}
+
+a:link,a:visited{
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+    width: 100%;
+    text-align: center;
+    text-shadow:1px 1px 2px black;
+}
+
+li{ 
+    display: inline;
+}

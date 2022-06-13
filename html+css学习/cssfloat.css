@@ -1,0 +1,55 @@
+#fd{
+    width:100px;
+    height:100px;
+    background-color:brown;
+    float: left;
+}
+
+#td{
+    width:100px;
+    height:100px;
+    background-color:aquamarine;
+    float: left;
+}
+
+#sd{
+    width:100px;
+    height:100px;
+    background-color:yellow;
+    float: left;
+}
+
+#father{
+    width:250px;
+    height:500px;
+    background-color:grey;
+}
+
+#text{
+    clear:left;
+}
+
+*{
+    margin:0px;
+    padding:0px;
+}
+/* margin：外边距 padding：内边距 border：边界 content：内容 */
+
+li{
+    list-style:none;
+}
+
+#div01{
+    width: 950px;
+    height:auto;
+    margin:20px auto;
+}
+ul{
+    width:250px;
+    float: left;
+}
+
+img{
+    width:500%;
+    height:500%;
+}

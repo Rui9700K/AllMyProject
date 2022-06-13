@@ -1,0 +1,19 @@
+#td01{
+    padding: 100px;
+}
+
+/* #box01{
+    border: 1;
+} */
+
+#border{
+    border:2px solid blue;
+    width: 40px;
+    text-align: center;
+}
+
+#margin{
+    background-color:aqua;
+    width:40px;
+    text-align: center; 
+}

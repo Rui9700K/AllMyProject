@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form id="nameform">
+            <input type="text" formmethod="post" name="title" formaction="test01.php">
+            <input type="submit">
+        </form>
+        <textarea form="nameform" formmethod="get" name="content" formaction="test01.php"></textarea>
+        <br />
+    </div>
+
+    <form id="test1">
+        <input type="submit" value="v1" name="s1" formaction="xx.jsp">提交到xx.jps页面
+        <input type="submit" value="v2" name="s2" formaction="xx.jsp">提交到xx.jps页面
+        <input type="submit" value="v3" name="s3" formaction="xx.jsp">提交到xx.jps页面
+    </form>
+</body>
+</html>

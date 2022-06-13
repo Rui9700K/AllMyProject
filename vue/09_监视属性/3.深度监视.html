@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h1>今天天气很{{wheather}}</h1>
+        <button @click="change">切换天气</button>
+        <h3>a的值是:{{numbers.a}}</h3>
+        <button @click="add">点击让a+1</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#container',
+            data: {
+                isHot: true,
+                numbers:{
+                    a:1,
+                    b:2
+                }
+            },
+            methods: {
+                change(){
+                    this.isHot = !this.isHot
+                },
+                add(){
+                    this.numbers.a++
+                }
+            },
+            computed: {
+                wheather() {
+                    if (this.isHot === true) {
+                        return "炎热"
+                    } else {
+                        return "凉爽"
+                    }
+                }
+            },
+            watch:{
+                wheather:{
+                    //immediate:true,//立即执行（初始化的时候让handler调用一下），默认false
+                    //handler什么时候调用？当监视对象发生改变时
+                    //前面的参数表示新值，后面的表示旧值
+                    handler(newValue,oldValue){
+                        console.log('wheather改变了,从'+oldValue+'变成了'+newValue)
+                    }
+                },
+                //监视多级结构中所有属性的变化
+                //vue 默认只检测一层，但是通过配置deep可以深度检测
+                //需要根据数据结构来确定是否开启
+                numbers:{
+                    deep:true,//deep设置
+                    handler(newValue){
+                        console.log('a变成了'+newValue)
+                    }
+                }
+                //vue中的setTime类,必须使用箭头函数
+                /* 
+                    简写：（只有handler函数）
+                    isHot(newValue,oldValue){
+                        console.log('wheather改变了,从'+oldValue+'变成了'+newValue)
+                    }
+                */
+            }
+        })
+        //实例对象的简化操作
+        /* vm.$watch('wheather',function(newValue,oldValue){
+            console.log('wheather改变了,从'+oldValue+'变成了'+newValue)
+        }) */
+
+        /* 
+        computed和watch之间的区别：
+        1. computed能完成的功能，watch都可以完成。
+        2.watch能完成的功能，computed不一定能完成，例如:watch可以进行异步操作。
+
+        两个重要的小原则:
+        1.所被Vue管理的函数，最好写成普通函数，这样this的指向才是vm或组件实例对象。
+        2.所有不被Vue所管理的函数(定时器的回调函数、ajax的回调函数等、promise的回调)，最好写成箭头函数，
+        这样this的指向才是vm或组件实例对象。
+        */
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

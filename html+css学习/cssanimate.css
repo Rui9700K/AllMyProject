@@ -1,0 +1,15 @@
+div{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+
+.div02{
+    transition:transform 1.5s;
+    transition-delay: 0.2s;
+}
+
+.div02:hover{
+    transform: rotateY(360deg);
+}
+

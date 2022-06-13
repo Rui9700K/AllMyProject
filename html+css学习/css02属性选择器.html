@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        [csstitle] {
+            color:red
+        }
+
+        [csstitle=p1]{
+            color:green;
+            font-family:Arial;
+            font-size: 20px;
+            font-weight: bold;
+            /* 哦哦 */
+            text-indent: 40px;
+        }
+
+        #p1{
+            text-align:left;
+        }
+
+        #p2{
+            text-align:center;
+        }
+
+        #p3{
+            text-align:right;
+        }
+
+        #a1{
+            text-decoration: none;
+            letter-spacing:2px;
+        }
+
+    </style>
+</head>
+<body>
+    <p csstitle="00">好的</p>
+    <p csstitle="p1">OK</p>
+    <p id="p1"><strong>这是左对齐</strong></p>
+    <p id="p2"><strong>这是居中对齐</strong></p>
+    <p id="p3"><strong>这是右对齐</strong></p>
+
+    <a id="a1" href="http://www.bilibili.com" target="_blank">bilibili</a>
+
+</body>
+</html>

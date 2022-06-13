@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <!-- 编写组件标签 -->
+        <school></school>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        //student组件（创建组件）
+        const student = Vue.extend({
+            template: `
+            <div>
+                <h2>学生姓名：{{studentName}}</h2>
+                <h2>学生年龄：{{age}}</h2>
+            </div>
+            `,
+            data() {
+                return {
+                    studentName: '周扬帆',
+                    age: 22,
+                }
+            }
+        })
+
+        //school组件（创建组件）
+        const school = Vue.extend({
+            //el不要写
+            template: `
+            <div>
+                <h1>学校名称：{{schoolName}}</h1>
+                <h1>地址：{{address}}</h1>
+                <student></student>
+                <button @click="showName">提示我学校姓名</button>
+            </div>
+            `,
+            data() {
+                //data写成函数式，返回对象
+                return {
+                    schoolName: 'BUCT',
+                    address: '朝阳',
+                }
+            },
+            methods: {
+                showName() {
+                    alert(this.schoolName)
+                }
+            },
+            components: {
+                student: student
+            }
+        })
+
+
+        //创建VM
+        new Vue({
+            el: '#container',
+            //注册组件
+            components: {
+                school: school,
+            },
+        })
+
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="main">
+        <table width="150" height="40" cellspacing="0">
+            <tr>
+                <td></td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+            </tr>
+            <tr v-for="item in list" key="item.id">
+                <td>
+                    <input type="checkbox" value="" v-model="item.checked">
+                </td>
+                <td>{{item.name}}</td>
+                <td>{{item.sex}}</td>
+                <td>{{item.age}}</td>
+            </tr>
+        </table>
+        <button @click="checkAll">全选</button>
+        <button @click="checkUnall">全不选</button>
+        <button @click="checkInverse">反选</button>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#main',
+            data() {
+                return {
+                    list: [
+                        { id: '12345678', name: '张三', sex: 0, age: '19', checked: false },
+                        { id: '12344677', name: '李四', sex: 1, age: '19', checked: false },
+                        { id: '12343674', name: '王五', sex: 0, age: '19', checked: false },
+                        { id: '12342673', name: '赵六', sex: 0, age: '19', checked: false },
+                        { id: '12341672', name: '小花', sex: 1, age: '19', checked: false }
+                    ] //list模拟接口请求出来的数据
+                }
+            },
+            methods: {
+                checkAll() {
+                    this.list.forEach(item => {
+                        item.checked = true;
+                    })
+                },
+                checkUnall() {
+                    this.list.forEach(item => {
+                        item.checked = false;
+                    })
+                },
+                checkInverse() {
+                    this.list.forEach(item => {
+                        item.checked = !item.checked;
+                    })
+                },
+            }
+        })
+    </script>
+
+    <script src="" async defer></script>
+</body>
+
+</html>

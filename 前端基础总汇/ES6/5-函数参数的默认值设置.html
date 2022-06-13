@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script>
+            //ES6 允许给函数参数赋值初始值
+            //1. 形参初始值 具有默认值的参数， 一般位置要靠后（潜规则）
+            function add(a,b,c=10){
+                return a + b + c;
+            }
+            let result = add(1,2);
+            console.log(result);
+
+            //2. 与解构赋值结合
+            function connect({host='107.0.0.1',username,password,port}){
+                console.log(host);
+                console.log(username);
+                console.log(password);
+                console.log(port)
+                //解构+赋值
+            }
+            connect({
+                host:'loaclhost',
+                username:'root',
+                password:'root',
+                port:3306
+            })
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="" async defer></script>
+    </body>
+</html>

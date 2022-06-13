@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <!-- 编写组件标签 -->
+        <school></school>
+    </div>
+    <script>
+        /* 
+            关于VueComponent:
+                1. school组件本质是一个 名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。
+            
+                2.我们只需要写<school/>或<school></schoo1>, Vue解析时会帮我们创建school组件的实例对象，即Vue帮我们执行的: new VueComponent(options)。 
+            
+                3.特别注意:每次调用Vue.extend,返回的都是一个 全新的VueComponent! !!
+            
+                4.关于this指向:
+                    (1) .组件配置中:
+                        data函数、methods 中的函数、watch中 的函数、computed中 的函数它们的this均是[ VueComponent实例对象]。
+                    (2).new Vue()配置中: 
+                        data函数、methods中 的函数、watch中的函数、computed中的函 数它们的this均是[Vue实例对象]。
+            
+                5. VueComponent的实例对象，以后简称vc (也可称之为:组件实例对象)。
+                    Vue的实例对象，以后简称vm。
+        */
+        Vue.config.productionTip = false;
+
+        //school组件（创建组件）
+        const school = Vue.extend({
+            //el不要写
+            template: `
+            <div>
+                <h1>学校名称：{{schoolName}}</h1>
+                <h1>地址：{{address}}</h1>
+                <button @click="showName">提示我学校姓名</button>
+            </div>
+            `,
+            data() {
+                //data写成函数式，返回对象
+                return {
+                    schoolName: 'BUCT',
+                    address: '朝阳',
+                }
+            },
+            methods: {
+                showName() {
+                    alert(this.schoolName)
+                }
+            },
+        })
+
+        console.log('@',school)
+
+        //创建VM
+        new Vue({
+            el: '#container',
+            //注册组件
+            components: {
+                school: school,
+            },
+        })
+
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

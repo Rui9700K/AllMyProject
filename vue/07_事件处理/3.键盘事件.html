@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+    <script>
+        window.onload = function () {
+
+        }
+    </script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h1>姓名：{{name}}</h1>
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+        <!-- 绑定按键也可以连续用.来指明按键 -->
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        /* 
+            1. Vue中常用的按键别名:
+            回车=> enter
+            删除=> delete ( 捕获“删除”和“退格”键)
+            退出=> esc
+            空格=> space
+            换行=> tab (特殊，配合keydown使用)
+            上=> up
+            下 => down
+            左=> left
+            右=> right
+        
+            ctrl、alt、shift、meta（win）需要配合其他键，然后再释放其他键，才可被触发
+        */
+
+        const vm = new Vue({
+            el: '#container',
+            data: {
+                name: "ZYF",
+            },
+            methods: {
+                showInfo(event){
+                    /* console.log(this) */
+                    console.log(event.target.value);
+                },
+            }
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

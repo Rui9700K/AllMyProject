@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h2>人员列表</h2>
+        <input type="text" placeholder="输入关键字" v-model="keyWord">
+        <ul>
+            <!-- v-for ：可遍历：数组，对象，字符串（用的很少），指定次数（用的很少） -->
+            <!-- 在遍历下 key必须是唯一值 且必须具有该属性，针对一些结构没有带标识，可以使用遍历时的下标来作为key值-->
+            <!-- <li v-for="person in personList" :key="person.id">{{person.name}}-{{person.age}}</li> -->
+            <li v-for="(person,index) in personListNew" :key="index">{{person.name}}-{{person.age}}-{{person.sex}}</li>
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        //watch实现：
+        /* new Vue({
+            el: '#container',
+            data: {
+                keyWord: '',
+                personList: [
+                    {
+                        id: 001,
+                        name: '马冬梅',
+                        age: 18,
+                        sex: '女'
+                    },
+                    {
+                        id: 002,
+                        name: '周冬雨',
+                        age: 19,
+                        sex: '女'
+                    },
+                    {
+                        id: 003,
+                        name: '周杰伦',
+                        age: 20,
+                        sex: '男'
+                    },
+                    {
+                        id: 003,
+                        name: '温兆伦',
+                        age: 20,
+                        sex: '男'
+                    },
+                ],
+                personListNew: [],
+            },
+            methods: {
+            },
+            computed: {
+            },
+            watch: {
+                keyWord:{
+                    immediate:true,
+                    handler(value) {
+                        this.personListNew = this.personList.filter((p) => {
+                            return p.name.indexOf(value) != -1
+                        })
+                    }
+                }
+            },
+        }) */
+        
+        //computed实现
+        new Vue({
+            el: '#container',
+            data: {
+                keyWord: '',
+                personList: [
+                    {
+                        id: 001,
+                        name: '马冬梅',
+                        age: 18,
+                        sex: '女'
+                    },
+                    {
+                        id: 002,
+                        name: '周冬雨',
+                        age: 19,
+                        sex: '女'
+                    },
+                    {
+                        id: 003,
+                        name: '周杰伦',
+                        age: 20,
+                        sex: '男'
+                    },
+                    {
+                        id: 003,
+                        name: '温兆伦',
+                        age: 20,
+                        sex: '男'
+                    },
+                ],
+            },
+            methods: {
+            },
+            computed: {
+                personListNew(){
+                    return this.personList.filter((p)=>{
+                        return p.name.indexOf(this.keyWord) != -1
+                    })
+                }
+            },
+            watch: {
+            },
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="study" list="dataliststudy" autocomplete="off">
+        <datalist id="dataliststudy" style="display: none">
+            <option value="HTML5">HTML5学习</option>
+            <option value="CSS3">CSS3学习</option>
+            <option value="JavaScript">javascript学习</option>
+        </datalist>
+    </form>
+
+    <br/>
+
+    <input type="text" name="greeting" autocomplete="on" list="dataliststudy">
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+    <!-- 
+            v-big 把绑定的数值放大10倍
+            v-fbind 绑定的input元素默认获取焦点
+         -->
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h2>当前的n值是:<span v-text="n"></span></h2>
+        <h2>放大10倍的n值是:<span v-big="n"></span></h2>
+        <button @click="n++">点我n+1</button>
+        <hr/>
+        <input type="text" v-fbind:value="n">
+    </div>
+    <script src="" async defer></script>
+</body>
+<script>
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: '#container',
+        data: {
+            n: 1,
+        },
+        methods: {
+        },
+        computed: {
+        },
+        watch: {
+        },
+        directives: {
+            //指令和元素被成功绑定的时候会调用
+            //指令所在的模板被重新解析时会调用
+            big(element,binding) {
+                //element 是dom元素实例
+                //value big所用的值（.来取value）
+                element.innerText = binding.value * 10
+            },
+
+            //完整写法（多了元素插入页面时的调用）
+            fbind:{
+                //指令与元素成功绑定
+                bind(element,binding){
+                    element.value = binding.value
+                },
+                //指令所在元素被插入页面时
+                inserted(element,binding){
+                    element.focus()
+                },
+                //指令所在的模板被重新解析时
+                update(element,binding) {
+                    element.value = binding.value
+                },
+            }
+
+            //注意，指令中的this都是window
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id='container'>
+        <school></school>
+    </div>
+    <script>
+        /* 
+            1.重要内置关系：VueComponent.prototype.__proto__ === Vue.prototype
+            2.为了让组件实例对象可以直接访问Vue原型上的属性和方法
+        */
+        Vue.config.productionTip = false;
+
+        //定义一个函数
+        function Demo() {
+            this.a = 1
+            this.b = 2
+        }
+
+        //创建一个实例对象
+        const d = new Demo()
+
+        console.log(Demo.prototype === d.__proto__)
+        //往原型链上添东西
+        Demo.prototype.x = 99//显示原型上添加
+
+        console.log(d.x)
+
+        //school组件（创建组件）
+        const school = Vue.extend({
+            //el不要写
+            template: `
+            <div>
+                <h1>学校名称：{{schoolName}}</h1>
+                <h1>地址：{{address}}</h1>
+                <button @click="showName">提示我学校姓名</button>
+            </div>
+            `,
+            data() {
+                //data写成函数式，返回对象
+                return {
+                    schoolName: 'BUCT',
+                    address: '朝阳',
+                }
+            },
+            methods: {
+                showName() {
+                    alert(this.schoolName)
+                }
+            },
+        })
+
+        //创建VM
+        new Vue({
+            el: '#container',
+            //注册组件
+            components: {
+                school: school,
+            },
+        })
+
+        console.log('@',school.prototype.__proto__ === Vue.prototype)
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

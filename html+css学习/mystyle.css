@@ -1,0 +1,28 @@
+h1{
+    color: red;
+}
+
+body{
+    color: rgb(0, 255, 0);
+}
+
+a{
+    color:rgb(217, 0, 255)
+}
+
+img{
+    width: 120px;
+    height: 100px;
+}
+
+dl{
+    color: aqua;
+}
+
+.colorselect1{
+    color:green
+}
+
+.colorselect2{
+    color:brown
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h2>人员列表</h2>
+        <button @click.once="add">添加人员</button>
+        <ul>
+            <!-- 为什么不用遍历的时候index，因为每次的index生成需要重新遍历数组 -->
+            <li v-for="(person,index) in personList" :key="person.id">{{person.name}}-{{person.age}}
+                <input type="text">
+            </li>
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        /* 
+            面试题: react、vue中的key有什么作用? (key的内部原理)
+
+            1.虚拟DOM中key的作用:
+            key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据[新数据]生成[新的虚拟DOM] ,
+            随后Vue进行[新虚拟DOM]与[旧虚拟DOM]的差异比较，比较规则如下: 
+
+            2.对比规则:
+                (1). I旧虚拟DOM中找到了与新虚拟DOM相同的key:
+                    A.若虚拟DOM中内容没变，直接使用之前的真实DOM，
+                    B.若虚拟DOM中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DOM。
+                (2).旧虚拟DOM中未找到与新虚拟DOM相同的key
+                    创建新的真实DOM,随后渲染到到页面。
+
+            3.用index作为key可能会引发的问题:
+                1.若对数据进行:逆序添加、逆序删除等破环顺序操作:
+                会产生没有必要的真实DOM更新==>界面效果没问题，但效率低。
+                2.如果结构中还包含输入类的DOM:
+                会产生错误DOM更新==>界面有问题。
+
+            4.开发中如何选择key?:
+                1.最好使用每条数据的唯一标 识作为key,比如id、手机号、身份证号、学号等唯一值。
+                2.如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，
+                使用index作为key是没有问题的。
+        */
+       
+        new Vue({
+            el: '#container',
+            data: {
+                personList: [
+                    {
+                        id: 001,
+                        name: 'John',
+                        age: 36,
+                    },
+                    {
+                        id: 002,
+                        name: 'Tom',
+                        age: 28,
+                    },
+                    {
+                        id: 003,
+                        name: 'Jerry',
+                        age: 30,
+                    },
+                ]
+            },
+            methods: {
+                add(){
+                    const p = {
+                        id:004,
+                        name: 'Kite',
+                        age: 26,
+                    }
+                    this.personList.unshift(p)
+                }
+            },
+            computed: {
+            },
+            watch: {
+            },
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

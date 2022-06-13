@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+    <style type="text/css">
+        .basic {
+            height: 100px;
+            width: 200px;
+            border: 5px solid black;
+        }
+
+        .happy {
+            background-color: aqua
+        }
+
+        .sad {
+            background-color: green
+        }
+
+        .normal {
+            background-color: grey
+        }
+
+        .style1 {
+            text-shadow: 2px 3px 1px pink;
+            background-color: aqua
+        }
+
+        .style2 {
+            border: 2px solid rgb(229, 255, 0)
+        }
+
+        .style3 {
+            border-radius:30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <!-- 绑定class样式 字符串写法 适用于：样式类名不确定，需要动态决定-->
+        <div class="basic" :class="mood" @click="changeMoodle">{{name}}</div>
+        <br />
+        <br />
+        <br />
+        <!-- 绑定class样式 数组写法 适用于： 样式个数不确定，名字也不确定-->
+        <div class="basic" :class="arr">{{name}}</div>
+        <br />
+        <br />
+        <br />
+        <!-- 绑定class样式 对象写法 适用于： 样式个数确定，名字也确定 ，动态确定用不用-->
+        <div class="basic" :class="classObj">{{name}}</div>
+        <br />
+        <br />
+        <br />
+        <!-- 绑定class样式 内联样式 style可以绑定对象，或者数组（数组里面存多个对象）-->
+        <div class="basic" :style = "fsize">{{name}}</div>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#container',
+            data: {
+                name: 'ZYF',
+                mood:'normal',
+                arr:[
+                    'style1',
+                    'style2',
+                    'style3',
+                ],
+                classObj:{
+                    style1:true,
+                    style2:true,
+                },
+                fsize:{
+                    fontSize:50 + 'px',
+                }
+            },
+            methods: {
+                changeMoodle(){
+                    const arr = ['happy','sad','normal']
+                    const result = Math.floor( Math.random()*3)
+                    this.mood = arr[result]
+                }
+            }
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

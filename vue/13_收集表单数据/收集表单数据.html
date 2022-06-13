@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <form @submit.prevent="submit">
+            <label for='account'>账号：</label>
+            <input id='account' type='text' v-model.trim="account">
+            <br />
+            密码：
+            <input type="password" v-model.trim="password"><!-- trim修饰，不收集空格 -->
+            <br /><br />
+            年龄
+            <input type="number" v-model.number="age"><!-- 数字修饰 -->
+            <br /><br />
+            性别：
+            男<input type="radio" name="sex" v-model="sex" value="男"><!-- 亲自配置value值 -->
+            女<input type="radio" name="sex" v-model="sex" value="女">
+            <br /><br />
+            爱好：
+            学习<input type="checkbox" v-model="hobby" value="学习"><!-- 复选框用数组存 -->
+            打游戏<input type="checkbox" v-model="hobby" value="打游戏">
+            吃饭<input type="checkbox" v-model="hobby" value="吃饭">
+            <br /><br />
+            <select v-model="city">
+                <option value="">请选择校区</option>
+                <option value="beijing">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="shenzhen">深圳</option>
+                <option value="guangzhou">广州</option>
+            </select>
+            <br /><br />
+            <textarea v-model.lazy="other"></textarea><!-- lazy修饰符，失去焦点再收集 -->
+            <br /><br />
+            <input type="checkbox" v-model="agree">
+            阅读并接受协议<a href="">《用户协议》</a>
+            <button>提交</button>
+        </form>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+
+        new Vue({
+            el: '#container',
+            data: {
+                account: "",
+                password: "",
+                age:"",
+                sex:"",
+                hobby: [],
+                city:"",
+                other:"",
+                agree:"",
+               },
+            methods: {
+                submit(){
+                    console.log(JSON.stringify(this._data))
+                }
+            },
+            computed: {
+            },
+            watch: {
+            },
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

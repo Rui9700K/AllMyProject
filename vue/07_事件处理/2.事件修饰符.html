@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
+    <style>
+        * {
+            margin: 0px;
+            margin-top: 20px;
+        }
+
+        .demo1 {
+            height: 100px;
+            background-color: black
+        }
+
+        .box1 {
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+        }
+
+        .box2 {
+            height: 50px;
+            width: 50px;
+            background-color: rgb(247, 0, 21);
+        }
+
+        .list{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(255, 238, 0);
+            overflow: auto;
+        }
+
+        li{
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <h1>{{name}},快去学习</h1>
+        <!-- 1. prevent:阻止默认事件(常用) ; -->
+        <a href="https://baidu.com" @click.prevent="showInfo" target="_blank">点击我提示信息</a>
+        <!-- 2.stop:阻止事件冒泡(常用); -->
+        <div class='demo1' @click="showInfo">
+            <button @click.stop="showInfo">点击我提示信息</button>
+        </div>
+        <!-- 3.once:事件只触发一次(常用); -->
+        <button @click.once="showInfo">点击我提示信息</button>
+        <!-- 4.capture:使用事件的捕获模式; -->
+        <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+        <!-- 5.self:只有event.target是当前操作的元素时才触发事件; -->
+        <div class='demo1' @click.self="showInfo">
+            <button @click="showInfo">点击我提示信息</button>
+        </div>
+        <!-- 6.passive:事件的默认行为立即执行，无需等待事件回调执行完毕; -->
+        <ul class = 'list' @wheel.passive="auto"><!-- @scroll:响应的是滚动条事件  wheel是滚轮-->
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        /* 
+            Vue中的事件修饰符:
+            1.prevent:阻止默认事件(常用);
+            2.stop:阻止事件冒泡(常用);
+            3.once:事件只触发一次(常用);
+            4.capture:使用事件的捕获模式;
+            5.self:只有event.target是当前操作的元素时才触发事件;
+            6.passive:事件的默认行为立即执行，无需等待事件回调执行完毕;
+
+            修饰符可以连续写（.完之后继续.）
+        */
+
+        const vm = new Vue({
+            el: '#container',
+            data: {
+                name: 'ZYF'
+            },
+            methods: {
+                showInfo() {
+                    alert('hello')
+                },
+                showMsg(msg) {
+                    alert(msg)
+                },
+                auto(){
+                    //console.log('@')
+                    for (let index = 0; index < 100000; index++) {
+                        console.log("@")
+                    }
+                    console.log("累坏了")
+                }
+            }
+        })
+    </script>
+    <script src="" async defer></script>
+</body>
+
+</html>

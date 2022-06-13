@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.top{
+    width: 100%;
+    height: 50px;
+    background-color: black;
+}
+
+.top_content {
+    width: 75%;
+    height: 50px;
+    margin: 0 auto;
+    background-color:green;
+}
+
+.body {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom:none;
+    width: 75%;
+    height: 1500px;
+    background-color:aquamarine;
+}
+
+.body_img{
+    width: 100%;
+    height: 400px;
+    background-color:orange;
+}
+
+.body_content{
+    width: 100%;
+    height: 1100px;
+    background-color: blueviolet;
+}
+
+.body_inf{
+    width: 100%;
+    height:50px;
+    background-color:azure;
+}
+
+.foot{
+    width: 75%;
+    height: 300px;
+    background-color:darkcyan;
+    margin: 0px auto;
+}
+
+.foot_content{
+    width: 100%;
+    height: 250px;
+    background-color:orchid;
+}
+
+.foot_menu{
+    width: 100%;
+    height: 50px;
+    background-color:black;
+}
